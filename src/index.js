@@ -11,14 +11,15 @@ class Cat {
     console.log(this._name + " is very happy");
   }
 
-  constructor(name, color) {
+  constructor(name, color, tiredness, hunger, loneliness, happiness) {
     this._name = name;
     this._color = color;
-    this._tiredness = 50;
-    this._hunger = 50;
-    this._loneliness = 50;
-    this._happiness = 50;
-    this.createUI();
+    this._tiredness = tiredness;
+    this._hunger = hunger;
+    this._loneliness = loneliness;
+    this._happiness = happiness;
+    this._UI = this.createUI();
+    this.update(this._UI);
   }
 
   createUI() {
@@ -28,13 +29,24 @@ class Cat {
     catHolder.classList.add("cat");
     catHolder.innerHTML = htmlTemplate;
     catHolder.getElementsByClassName("cat-name")[0].innerHTML = this._name;
-    appHolder.appendChild(catHolder);
+    let catDOM = appHolder.appendChild(catHolder);
+    return catDOM;
   }
 
-  update() {}
+  updateStat(className, value) {
+    this._UI.getElementsByClassName(className)[0].value = value;
+  }
+  update() {
+    this.updateStat("tiredness", this._tiredness);
+    this.updateStat("hunger", this._hunger);
+    this.updateStat("loneliness", this._loneliness);
+    this.updateStat("happiness", this._happiness);
+  }
 }
 
 let initializeCats = () => {
-  const Hugh = new Cat("Hugh", "white");
+  const Hugh = new Cat("Hugh", "white", 50, 50, 50, 50);
+  const Twig = new Cat("Twig", "white", 10, 70, 70, 30);
 };
-document.addEventListener("DOMContentLoaded", initializeCats);
+//document.addEventListener("DOMContentLoaded", initializeCats);
+initializeCats();
