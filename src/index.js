@@ -123,19 +123,19 @@ class Cat {
 
     switch (true) {
       case this._tiredness < 5:
-        status += "alomst asleep";
+        status += "like on caffeine";
         break;
       case this._tiredness < 20:
-        status += "extremely tired";
+        status += "pretty woke";
         break;
       case this._tiredness < 50:
         status += "a little tired";
         break;
-      case this._tiredness < 70:
-        status += "pretty woke";
+      case this._tiredness < 85:
+        status += "extremely tired";
         break;
       default:
-        status += "like on caffeine.";
+        status += "alomst asleep";
     }
     status += ", " + nl;
     switch (true) {
