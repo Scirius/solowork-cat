@@ -2,10 +2,10 @@ import "./styles.css";
 
 let htmlTemplate = `
     <h1 class="cat-name"></h1>
-		<input type="text" class="catStat tiredness">
-		<input type="text" class="catStat hunger">
-		<input type="text" class="catStat loneliness">
-    <input type="text" class="catStat happiness">
+		<input type="text" class="cat-stat tiredness"><span class="cat-stat-label cat-stat-tiredness">Tiredness</span><br />
+		<input type="text" class="cat-stat hunger"><span class="cat-stat-label cat-stat-hunger">Hunger</span><br />
+		<input type="text" class="cat-stat loneliness"><span class="cat-stat-label cat-stat-loneliness">Loneliness</span><br />
+    <input type="text" class="cat-stat happiness"><span class="cat-stat-label cat-stat-happiness">Happiness</span><br />
     `;
 
 class Cat {

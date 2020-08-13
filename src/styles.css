@@ -1,3 +1,21 @@
 body {
   font-family: sans-serif;
 }
+.cat {
+  width: 200px;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+.cat-name {
+  border-bottom: 1px solid #ccc;
+}
+.cat-stat {
+  margin-bottom: 10px;
+  width: 40px;
+  font-weight: bold;
+}
+.cat-stat-label {
+  margin-left: 10px;
+  white-space: nowrap;
+  color: #333;
+}
