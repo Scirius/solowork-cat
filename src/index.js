@@ -48,22 +48,48 @@ class Cat {
     this._happiness -= 5;
     this.update();
   }
+
   feed() {
     console.log("Fed " + this._name);
-    this._hunger -= 5;
-    this._tiredness += 5;
+    if (Math.random() * 100 < 30 && this._hunger === 0) {
+      alert(`Woah! You fed to much! ${this._name} puked on your couch.`);
+      this._tiredness = 80;
+      this._hunger = 0;
+      this._loneliness = 100;
+      this._happiness = 0;
+    } else {
+      this._hunger -= 5;
+      this._tiredness += 5;
+    }
     this.update();
   }
+
   pet() {
     console.log("Petted  " + this._name);
-    this._loneliness -= 5;
-    this._hunger += 5;
+    if (Math.random() * 100 < 5) {
+      alert(`Woah! You petted to much! ${this._name} went crazy.`);
+      this._tiredness = 0;
+      this._hunger = 90;
+      this._loneliness = 0;
+      this._happiness = 0;
+    } else {
+      this._loneliness -= 5;
+      this._hunger += 5;
+    }
     this.update();
   }
   obey() {
     console.log("Obeyed to " + this._name);
-    this._happiness += 5;
-    this._loneliness += 5;
+    if (Math.random() * 100 < 20 && this.__happiness === 100) {
+      alert(`You obeyed to much! ${this._name} gained world domination.`);
+      this._tiredness = 80;
+      this._hunger = 0;
+      this._loneliness = 100;
+      this._happiness = 0;
+    } else {
+      this._happiness += 5;
+      this._loneliness += 5;
+    }
     this.update();
   }
 
