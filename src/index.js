@@ -1,5 +1,14 @@
 import "./styles.css";
 
+let htmlTemplate = `
+  <div class="cat">
+    <h1><span class="catName>Dummy</span></h1>
+		<input type="text" class="catStat .tiredness">
+		<input type="text" class="catStat .hunger">
+		<input type="text" class="catStat .loneliness">
+		<input type="text" class="catStat .happiness">
+	</div>`;
+
 class Cat {
   status() {
     console.log(this._name + " is very happy");
