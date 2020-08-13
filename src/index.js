@@ -4,10 +4,10 @@ let htmlTemplate = `
 		<input type="text" class="cat-stat hunger"><span class="cat-stat-label cat-stat-hunger">Hunger</span><br />
 		<input type="text" class="cat-stat loneliness"><span class="cat-stat-label cat-stat-loneliness">Loneliness</span><br />
     <input type="text" class="cat-stat happiness"><span class="cat-stat-label cat-stat-happiness">Happiness</span><br />
-    <button class="cat-action cat-tickle">Tickle! (tiredness -5)</button>
-    <button class="cat-action cat-feed">Feed! (hunger -5)</button>
-    <button class="cat-action cat-pet">Pet! (loneliness -5)</button>
-    <button class="cat-action cat-obey">Obey! (happiness +5)</button>
+    <button class="cat-action cat-tickle">Tickle! (TIR -5, HAP-5)</button>
+    <button class="cat-action cat-feed">Feed! (HUN -5, TIR +5)</button>
+    <button class="cat-action cat-pet">Pet! (LON -5, HUN +5)</button>
+    <button class="cat-action cat-obey">Obey! (HAP +5, LON +5)</button>
     
     `;
 
@@ -41,7 +41,29 @@ class Cat {
 
   tickle() {
     console.log("Tickled " + this._name);
+    this._tiredness -= 5;
+    this._happiness -= 5;
+    this.update();
   }
+  feed() {
+    console.log("Fed " + this._name);
+    this._hunger -= 5;
+    this._tiredness += 5;
+    this.update();
+  }
+  pet() {
+    console.log("Petted  " + this._name);
+    this._loneliness -= 5;
+    this._hunger += 5;
+    this.update();
+  }
+  obey() {
+    console.log("Obeyed to " + this._name);
+    this._happiness += 5;
+    this._loneliness += 5;
+    this.update();
+  }
+
   assignAction(className, action) {
     this._UI
       .getElementsByClassName(className)[0]
@@ -53,6 +75,15 @@ class Cat {
     this.assignAction("cat-tickle", function () {
       scope.tickle();
     });
+    this.assignAction("cat-feed", function () {
+      scope.feed();
+    });
+    this.assignAction("cat-pet", function () {
+      scope.pet();
+    });
+    this.assignAction("cat-obey", function () {
+      scope.obey();
+    });
   }
 
   updateStat(className, value) {
@@ -60,6 +91,10 @@ class Cat {
   }
 
   update() {
+    this._tiredness = Math.min(Math.max(this._tiredness, 0), 100);
+    this._hunger = Math.min(Math.max(this._hunger, 0), 100);
+    this._loneliness = Math.min(Math.max(this._loneliness, 0), 100);
+    this._happiness = Math.min(Math.max(this._happiness, 0), 100);
     this.updateStat("tiredness", this._tiredness);
     this.updateStat("hunger", this._hunger);
     this.updateStat("loneliness", this._loneliness);
