@@ -1,14 +1,14 @@
 let htmlTemplate = `
     <h1 class="cat-name"></h1>
-		<input type="text" class="cat-stat tiredness"><span class="cat-stat-label cat-stat-tiredness">Tiredness</span><br />
-		<input type="text" class="cat-stat hunger"><span class="cat-stat-label cat-stat-hunger">Hunger</span><br />
-		<input type="text" class="cat-stat loneliness"><span class="cat-stat-label cat-stat-loneliness">Loneliness</span><br />
-    <input type="text" class="cat-stat happiness"><span class="cat-stat-label cat-stat-happiness">Happiness</span><br />
+		<input type="text" readonly class="cat-stat tiredness"><span class="cat-stat-label cat-stat-tiredness">Tiredness</span><br />
+		<input type="text" readonly class="cat-stat hunger"><span class="cat-stat-label cat-stat-hunger">Hunger</span><br />
+		<input type="text" readonly class="cat-stat loneliness"><span class="cat-stat-label cat-stat-loneliness">Loneliness</span><br />
+    <input type="text" readonly class="cat-stat happiness"><span class="cat-stat-label cat-stat-happiness">Happiness</span><br />
     <button class="cat-action cat-tickle">Tickle! (TIR -5, HAP-5)</button>
     <button class="cat-action cat-feed">Feed! (HUN -5, TIR +5)</button>
     <button class="cat-action cat-pet">Pet! (LON -5, HUN +5)</button>
     <button class="cat-action cat-obey">Obey! (HAP +5, LON +5)</button>
-    <textarea class="cat-status"></textarea>
+    <textarea class="cat-status" readonly></textarea>
 
     `;
 
