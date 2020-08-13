@@ -24,7 +24,8 @@ class Cat {
     this._loneliness = loneliness;
     this._happiness = happiness;
     this._UI = this.createUI();
-    this.update(this._UI);
+    this.assignActions();
+    this.update();
   }
 
   createUI() {
@@ -35,8 +36,23 @@ class Cat {
     catHolder.innerHTML = htmlTemplate;
     catHolder.getElementsByClassName("cat-name")[0].innerHTML = this._name;
     let catDOM = appHolder.appendChild(catHolder);
-
     return catDOM;
+  }
+
+  tickle() {
+    console.log("Tickled " + this._name);
+  }
+  assignAction(className, action) {
+    this._UI
+      .getElementsByClassName(className)[0]
+      .addEventListener("click", action, false);
+  }
+  assignActions() {
+    /* this allows to transfer this into the eventlistener scope */
+    var scope = this;
+    this.assignAction("cat-tickle", function () {
+      scope.tickle();
+    });
   }
 
   updateStat(className, value) {
