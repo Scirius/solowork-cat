@@ -1,10 +1,20 @@
 import "./styles.css";
 
-document.getElementById("app").innerHTML = `
-<h1>Hello Vanilla!</h1>
-<div>
-  We use the same configuration as Parcel to bundle this sandbox, you can find more
-  info about Parcel 
-  <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>.
-</div>
-`;
+class Cat {
+  status() {
+    console.log(this._name + " is very happy");
+  }
+
+  constructor(name, color) {
+    this._name = name;
+    this._color = color;
+    this._tiredness = 0;
+    this._hunger = 0;
+    this._loneliness = 0;
+    this._happiness = 0;
+  }
+
+  update() {}
+}
+
+const Hugh = new Cat("Hugh", "white");
