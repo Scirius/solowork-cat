@@ -1,5 +1,3 @@
-import "./styles.css";
-
 let htmlTemplate = `
     <h1 class="cat-name"></h1>
 		<input type="text" class="cat-stat tiredness"><span class="cat-stat-label cat-stat-tiredness">Tiredness</span><br />
@@ -16,10 +14,10 @@ class Cat {
   constructor(name, color) {
     this._name = name;
     this._color = color;
-    this._tiredness = 0;
-    this._hunger = 0;
-    this._loneliness = 0;
-    this._happiness = 0;
+    this._tiredness = 50;
+    this._hunger = 50;
+    this._loneliness = 50;
+    this._happiness = 50;
     this.createUI();
   }
 
@@ -29,11 +27,14 @@ class Cat {
     let catHolder = document.createElement("div");
     catHolder.classList.add("cat");
     catHolder.innerHTML = htmlTemplate;
+    catHolder.getElementsByClassName("cat-name")[0].innerHTML = this._name;
     appHolder.appendChild(catHolder);
-    //appHolder.getElementsByClassName("catName")[0].innerHTML="Brot";
   }
 
   update() {}
 }
 
-const Hugh = new Cat("Hugh", "white");
+let initializeCats = () => {
+  const Hugh = new Cat("Hugh", "white");
+};
+document.addEventListener("DOMContentLoaded", initializeCats);
