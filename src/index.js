@@ -12,6 +12,8 @@ let htmlTemplate = `
 
     `;
 
+/* new line characters for textarea */
+const nl = String.fromCharCode(13, 10);
 class Cat {
   status() {
     console.log(this._name + " is very happy");
@@ -90,6 +92,79 @@ class Cat {
   updateStat(className, value) {
     this._UI.getElementsByClassName(className)[0].value = value;
   }
+  updateStatus() {
+    let status = this._name + " is ";
+
+    switch (true) {
+      case this._tiredness < 5:
+        status += "alomst asleep";
+        break;
+      case this._tiredness < 20:
+        status += "extremely tired";
+        break;
+      case this._tiredness < 50:
+        status += "a little tired";
+        break;
+      case this._tiredness < 70:
+        status += "pretty woke";
+        break;
+      default:
+        status += "like on caffeine.";
+    }
+    status += ", " + nl;
+    switch (true) {
+      case this._hunger < 5:
+        status += "crammed with food";
+        break;
+      case this._hunger < 20:
+        status += "a bit hungry";
+        break;
+      case this._hunger < 50:
+        status += "hungry as usual";
+        break;
+      case this._hunger < 80:
+        status += "really hungry";
+        break;
+      default:
+        status += "is getting aggressively hungry";
+    }
+    status += ", " + nl;
+    switch (true) {
+      case this._loneliness < 5:
+        status += "doesn't give a fuck about company";
+        break;
+      case this._loneliness < 20:
+        status += "slightly lonely";
+        break;
+      case this._loneliness < 50:
+        status += "lonely as usual";
+        break;
+      case this._loneliness < 80:
+        status += "lonely (lonely, lonely, lonely)";
+        break;
+      default:
+        status += "is the last cat in the world";
+    }
+
+    status += " and ";
+    switch (true) {
+      case this._happiness < 5:
+        status += "so sad.";
+        break;
+      case this._happiness < 20:
+        status += "rather depressed.";
+        break;
+      case this._happiness < 50:
+        status += "a little depressed.";
+        break;
+      case this._happiness < 80:
+        status += "pretty happy.";
+        break;
+      default:
+        status += "riding rainbows.";
+    }
+    this._UI.getElementsByClassName("cat-status")[0].value = status;
+  }
 
   update() {
     this._tiredness = Math.min(Math.max(this._tiredness, 0), 100);
@@ -99,10 +174,9 @@ class Cat {
     this.updateStat("tiredness", this._tiredness);
     this.updateStat("hunger", this._hunger);
     this.updateStat("loneliness", this._loneliness);
+    this.updateStat("happiness", this._happiness);
     this.updateStatus();
   }
-
-  updateStatus() {}
 }
 
 let initializeCats = () => {
