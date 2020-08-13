@@ -8,7 +8,8 @@ let htmlTemplate = `
     <button class="cat-action cat-feed">Feed! (HUN -5, TIR +5)</button>
     <button class="cat-action cat-pet">Pet! (LON -5, HUN +5)</button>
     <button class="cat-action cat-obey">Obey! (HAP +5, LON +5)</button>
-    
+    <textarea class="cat-status"></textarea>
+
     `;
 
 class Cat {
@@ -98,8 +99,10 @@ class Cat {
     this.updateStat("tiredness", this._tiredness);
     this.updateStat("hunger", this._hunger);
     this.updateStat("loneliness", this._loneliness);
-    this.updateStat("happiness", this._happiness);
+    this.updateStatus();
   }
+
+  updateStatus() {}
 }
 
 let initializeCats = () => {
