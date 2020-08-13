@@ -4,6 +4,11 @@ let htmlTemplate = `
 		<input type="text" class="cat-stat hunger"><span class="cat-stat-label cat-stat-hunger">Hunger</span><br />
 		<input type="text" class="cat-stat loneliness"><span class="cat-stat-label cat-stat-loneliness">Loneliness</span><br />
     <input type="text" class="cat-stat happiness"><span class="cat-stat-label cat-stat-happiness">Happiness</span><br />
+    <button class="cat-action cat-tickle">Tickle! (tiredness -5)</button>
+    <button class="cat-action cat-feed">Feed! (hunger -5)</button>
+    <button class="cat-action cat-pet">Pet! (loneliness -5)</button>
+    <button class="cat-action cat-obey">Obey! (happiness +5)</button>
+    
     `;
 
 class Cat {
@@ -30,12 +35,14 @@ class Cat {
     catHolder.innerHTML = htmlTemplate;
     catHolder.getElementsByClassName("cat-name")[0].innerHTML = this._name;
     let catDOM = appHolder.appendChild(catHolder);
+
     return catDOM;
   }
 
   updateStat(className, value) {
     this._UI.getElementsByClassName(className)[0].value = value;
   }
+
   update() {
     this.updateStat("tiredness", this._tiredness);
     this.updateStat("hunger", this._hunger);

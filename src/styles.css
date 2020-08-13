@@ -7,6 +7,14 @@ body {
   padding: 20px;
   margin: 10px auto;
 }
+
+.cat button {
+  margin-bottom: 10px;
+  background: #ddf;
+  border: 2px solid #669;
+  padding: 10px;
+  width: 200px;
+}
 .cat h1 {
   margin: 0px 0px 20px 0px;
   padding: 0;
