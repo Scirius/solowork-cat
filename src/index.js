@@ -99,19 +99,17 @@ class Cat {
       .addEventListener("click", action, false);
   }
   assignActions() {
-    /* this allows to transfer this into the eventlistener scope */
-    var scope = this;
-    this.assignAction("cat-tickle", function () {
-      scope.tickle();
+    this.assignAction("cat-tickle", () => {
+      this.tickle();
     });
-    this.assignAction("cat-feed", function () {
-      scope.feed();
+    this.assignAction("cat-feed", () => {
+      this.feed();
     });
-    this.assignAction("cat-pet", function () {
-      scope.pet();
+    this.assignAction("cat-pet", () => {
+      this.pet();
     });
-    this.assignAction("cat-obey", function () {
-      scope.obey();
+    this.assignAction("cat-obey", () => {
+      this.obey();
     });
   }
 
